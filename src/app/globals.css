@@ -63,15 +63,33 @@ body {
 
 /* Review card styles */
 .review-card {
-  @apply bg-white rounded-lg p-6 shadow-md flex-shrink-0 w-full sm:w-96;
+  @apply bg-white rounded-lg p-6 shadow-md flex-shrink-0 w-80 flex flex-col;
 }
 
-.star-rating {
-  @apply flex gap-0.5;
+/* Marquee animation for reviews */
+.marquee-container {
+  overflow: hidden;
+  width: 100%;
 }
 
-.star {
-  @apply text-yellow-400 text-lg;
+.marquee-track {
+  display: flex;
+  gap: 1.5rem;
+  animation: marquee 40s linear infinite;
+  width: max-content;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 /* Process step styles */

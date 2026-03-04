@@ -8,49 +8,85 @@ html {
 
 body {
   background-color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.gradient-blue {
-  background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%);
-}
-
-.btn-accent {
-  @apply bg-accent text-black hover:bg-yellow-400 transition-colors;
-}
-
+/* ===== Layout ===== */
 .section-padding {
-  @apply py-16 md:py-24;
+  @apply py-20 md:py-28;
 }
 
 .max-w-container {
-  @apply max-w-7xl mx-auto px-4 md:px-6 lg:px-8;
+  @apply max-w-7xl mx-auto px-5 md:px-8 lg:px-10;
 }
 
-/* Custom scrollbar */
+/* ===== Gradients ===== */
+.gradient-blue {
+  background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #3b82f6 100%);
+}
+
+/* ===== Buttons ===== */
+.btn-accent {
+  @apply bg-accent text-gray-900 font-semibold hover:bg-accent-hover transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5;
+}
+
+.btn-primary {
+  @apply bg-primary text-white font-semibold hover:bg-primary-dark transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5;
+}
+
+/* ===== Navigation ===== */
+.nav-link {
+  @apply text-gray-600 hover:text-primary transition-colors duration-200 text-sm font-medium relative;
+}
+
+.nav-link::after {
+  content: '';
+  @apply absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-200;
+}
+
+.nav-link:hover::after {
+  @apply w-full;
+}
+
+/* ===== Custom scrollbar ===== */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #f8fafc;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #2563eb;
-  border-radius: 5px;
+  background: #cbd5e1;
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #1e40af;
+  background: #2563eb;
 }
 
-/* Accordion styles */
+/* ===== Section headers ===== */
+.section-badge {
+  @apply inline-block text-sm font-semibold text-primary bg-blue-50 px-4 py-1.5 rounded-full mb-4 tracking-wide uppercase;
+}
+
+.section-title {
+  @apply text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight;
+}
+
+.section-subtitle {
+  @apply text-lg text-gray-500 leading-relaxed max-w-2xl;
+}
+
+/* ===== Accordion styles ===== */
 .accordion-item {
-  @apply border-b border-gray-200;
+  @apply border border-gray-100 rounded-xl mb-3 overflow-hidden bg-white shadow-soft transition-all duration-200 hover:shadow-card;
 }
 
 .accordion-header {
-  @apply cursor-pointer py-4 flex justify-between items-center hover:bg-gray-50 transition-colors px-4;
+  @apply cursor-pointer py-5 flex justify-between items-center transition-colors px-6 gap-4;
 }
 
 .accordion-content {
@@ -58,24 +94,26 @@ body {
 }
 
 .accordion-body {
-  @apply px-4 py-4 text-gray-700 bg-gray-50;
+  @apply px-6 pb-5 text-gray-600 leading-relaxed;
 }
 
-/* Review card styles */
+/* ===== Review card styles ===== */
 .review-card {
-  @apply bg-white rounded-lg p-6 shadow-md flex-shrink-0 w-80 flex flex-col;
+  @apply bg-white rounded-2xl p-6 shadow-card flex-shrink-0 w-80 flex flex-col border border-gray-100 hover:shadow-card-hover transition-shadow duration-300;
 }
 
-/* Marquee animation for reviews */
+/* ===== Marquee animation ===== */
 .marquee-container {
   overflow: hidden;
   width: 100%;
+  mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
 }
 
 .marquee-track {
   display: flex;
   gap: 1.5rem;
-  animation: marquee 40s linear infinite;
+  animation: marquee 50s linear infinite;
   width: max-content;
 }
 
@@ -92,15 +130,29 @@ body {
   }
 }
 
-/* Process step styles */
+/* ===== Process step styles ===== */
 .process-step {
   @apply flex flex-col items-center text-center;
 }
 
 .process-icon {
-  @apply w-16 h-16 rounded-full bg-accent flex items-center justify-center mb-4;
+  @apply w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center mb-5 shadow-lg text-white transition-transform duration-300 hover:scale-110 hover:-rotate-3;
 }
 
-.arrow-separator {
-  @apply hidden md:block text-2xl text-gray-400 mx-4;
+.process-arrow {
+  @apply hidden md:flex items-center justify-center text-gray-300;
+}
+
+/* ===== Stat card ===== */
+.stat-card {
+  @apply bg-white rounded-2xl p-6 text-center shadow-soft border border-gray-100;
+}
+
+/* ===== Check item ===== */
+.check-item {
+  @apply flex items-center gap-4 p-4 rounded-xl bg-blue-50/50 border border-blue-100/50;
+}
+
+.check-icon {
+  @apply w-8 h-8 rounded-full bg-primary flex items-center justify-center flex-shrink-0 text-white text-sm font-bold;
 }

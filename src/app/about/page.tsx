@@ -29,7 +29,7 @@ export default function AboutPage() {
 
           <a
             href="tel:010-5811-5297"
-            className="flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-primary-dark transition-all duration-200 shadow-md hover:shadow-lg"
+            className="flex items-center gap-2 bg-primary text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-primary-dark transition-all duration-200 shadow-md hover:shadow-lg"
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -46,13 +46,13 @@ export default function AboutPage() {
           <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl" />
         </div>
 
-        <div className="max-w-container flex flex-col md:flex-row items-center gap-8 py-20 md:py-28 relative z-10">
+        <div className="max-w-container flex flex-col md:flex-row items-center gap-12 py-24 md:py-32 relative z-10">
           <div className="flex-1 animate-fade-in-up">
-            <span className="inline-block text-sm font-medium bg-white/15 backdrop-blur-sm px-4 py-1.5 rounded-full mb-6 tracking-wide">
+            <span className="inline-block text-sm font-medium bg-white/15 backdrop-blur-sm px-5 py-2 rounded-full mb-8 tracking-wide">
               빠른 출동, 전문 장비, 숙련된 스탭
             </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight">회사 소개</h1>
-            <p className="text-lg md:text-xl opacity-90 max-w-lg leading-relaxed">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-5">회사 소개</h1>
+            <p className="text-lg md:text-xl text-white/85 max-w-lg" style={{ lineHeight: '1.75' }}>
               우승 스카이차는 어떤 현장에서도 최고의 결과를 만듭니다
             </p>
           </div>
@@ -65,21 +65,21 @@ export default function AboutPage() {
       {/* ===== About Content ===== */}
       <section className="section-padding">
         <div className="max-w-container">
-          <div className="grid md:grid-cols-2 gap-16 items-start">
+          <div className="grid md:grid-cols-2 gap-16 lg:gap-24 items-start">
             {/* Left */}
             <div>
               <span className="section-badge">About Us</span>
-              <h2 className="section-title mb-4">
+              <h2 className="section-title mb-6">
                 안전한 작업, 정확한 결과<br />
                 우승 스카이차가 책임집니다
               </h2>
-              <p className="text-primary font-semibold text-lg">
+              <p className="text-primary font-semibold text-lg" style={{ lineHeight: '1.7' }}>
                 정확한 현장 분석과 빠른 대응으로 고객에게 최상의 결과를 약속드립니다
               </p>
             </div>
 
             {/* Right */}
-            <div className="space-y-5 text-gray-600 text-lg leading-relaxed">
+            <div className="space-y-7 text-gray-600 text-[17px]" style={{ lineHeight: '1.9' }}>
               <p>
                 우승 스카이차는 다양한 현장에서 요구되는 고소작업을
                 더 안전하게, 더 전문적으로, 더 빠르게 해결하기 위해 만들어진 전문 스카이차 서비스 기업입니다.
@@ -101,21 +101,21 @@ export default function AboutPage() {
       {/* ===== Process Flow ===== */}
       <section className="bg-gray-50 section-padding">
         <div className="max-w-container">
-          <div className="text-center mb-16">
+          <div className="text-center mb-20">
             <span className="section-badge">작업 프로세스</span>
             <h2 className="section-title">체계적인 4단계 프로세스</h2>
           </div>
 
-          <div className="grid md:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-4 gap-8">
             {steps.map((step, index) => (
-              <div key={index} className="relative bg-white rounded-2xl p-8 shadow-soft border border-gray-100 hover:shadow-card transition-shadow duration-300 group">
-                <div className="w-12 h-12 rounded-xl bg-primary text-white flex items-center justify-center font-bold text-lg mb-5 group-hover:scale-110 transition-transform">
+              <div key={index} className="relative bg-white rounded-2xl p-9 shadow-soft border border-gray-100 hover:shadow-card transition-shadow duration-300 group">
+                <div className="w-14 h-14 rounded-xl bg-primary text-white flex items-center justify-center font-bold text-xl mb-6 group-hover:scale-110 transition-transform">
                   {index + 1}
                 </div>
-                <h3 className="font-bold text-gray-900 text-lg mb-2">{step.label}</h3>
-                <p className="text-gray-500 text-sm leading-relaxed">{step.desc}</p>
+                <h3 className="font-bold text-gray-900 text-lg mb-3">{step.label}</h3>
+                <p className="text-gray-500 text-[15px]" style={{ lineHeight: '1.8' }}>{step.desc}</p>
                 {index < steps.length - 1 && (
-                  <div className="hidden md:block absolute top-1/2 -right-3 -translate-y-1/2 text-gray-300 z-10">
+                  <div className="hidden md:block absolute top-1/2 -right-4 -translate-y-1/2 text-gray-300 z-10">
                     <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
                     </svg>
@@ -130,13 +130,13 @@ export default function AboutPage() {
       {/* ===== CTA ===== */}
       <section className="bg-primary section-padding">
         <div className="max-w-container text-center text-white">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">작업이 필요하신가요?</h2>
-          <p className="text-blue-100 text-lg mb-8 max-w-xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold mb-5">작업이 필요하신가요?</h2>
+          <p className="text-blue-100 text-lg mb-10 max-w-xl mx-auto" style={{ lineHeight: '1.8' }}>
             현장 상담부터 출동까지, 우승 스카이차가 빠르고 정확하게 도와드립니다.
           </p>
           <a
             href="tel:010-5811-5297"
-            className="inline-flex items-center gap-2 btn-accent px-10 py-4 rounded-xl text-lg"
+            className="inline-flex items-center gap-3 btn-accent px-10 py-4 rounded-xl text-lg"
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -147,7 +147,7 @@ export default function AboutPage() {
       </section>
 
       {/* ===== Footer ===== */}
-      <footer className="bg-gray-950 text-gray-400 py-10 border-t border-gray-800">
+      <footer className="bg-gray-950 text-gray-400 py-12 border-t border-gray-800">
         <div className="max-w-container">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-2">

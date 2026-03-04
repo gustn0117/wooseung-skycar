@@ -88,7 +88,7 @@ export default function Home() {
 
           <a
             href="tel:010-5811-5297"
-            className="flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-primary-dark transition-all duration-200 shadow-md hover:shadow-lg"
+            className="flex items-center gap-2 bg-primary text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-primary-dark transition-all duration-200 shadow-md hover:shadow-lg"
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -100,27 +100,26 @@ export default function Home() {
 
       {/* ===== Hero Section ===== */}
       <section id="hero" className="gradient-blue text-white relative overflow-hidden">
-        {/* Background decorations */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute -top-40 -right-40 w-96 h-96 bg-white/5 rounded-full blur-3xl" />
           <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl" />
         </div>
 
-        <div className="max-w-container flex items-center justify-between gap-12 py-20 md:py-32 relative z-10">
+        <div className="max-w-container flex items-center justify-between gap-16 py-24 md:py-36 relative z-10">
           <div className="flex-1 animate-fade-in-up">
-            <span className="inline-block text-sm font-medium bg-white/15 backdrop-blur-sm px-4 py-1.5 rounded-full mb-6 tracking-wide">
+            <span className="inline-block text-sm font-medium bg-white/15 backdrop-blur-sm px-5 py-2 rounded-full mb-8 tracking-wide">
               신속한 대응, 완벽한 작업
             </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-7">
               우승 스카이차
             </h1>
-            <p className="text-lg md:text-xl opacity-90 mb-10 max-w-lg leading-relaxed">
+            <p className="text-lg md:text-xl text-white/85 mb-12 max-w-lg" style={{ lineHeight: '1.75' }}>
               우승 스카이차는 스카이차·고소작업차 전문 대여 업체로 어떤 환경에서도 안전하고 정확한 작업을 보장합니다
             </p>
             <div className="flex flex-wrap gap-4">
               <a
                 href="tel:010-5811-5297"
-                className="inline-flex items-center gap-2 btn-accent px-8 py-3.5 rounded-xl text-base"
+                className="inline-flex items-center gap-2 btn-accent px-8 py-4 rounded-xl text-base"
               >
                 지금 문의하기
                 <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -129,7 +128,7 @@ export default function Home() {
               </a>
               <button
                 onClick={() => scrollToSection('about')}
-                className="inline-flex items-center gap-2 border-2 border-white/30 text-white px-8 py-3.5 rounded-xl hover:bg-white/10 transition-all duration-200 text-base font-semibold"
+                className="inline-flex items-center gap-2 border-2 border-white/30 text-white px-8 py-4 rounded-xl hover:bg-white/10 transition-all duration-200 text-base font-semibold"
               >
                 더 알아보기
               </button>
@@ -149,9 +148,9 @@ export default function Home() {
       {/* ===== Process Section ===== */}
       <section id="services" className="bg-gray-50 section-padding">
         <div className="max-w-container">
-          <div className="text-center mb-16">
+          <div className="text-center mb-20">
             <span className="section-badge">서비스 절차</span>
-            <h2 className="section-title">간편한 3단계로 시작하세요</h2>
+            <h2 className="section-title mb-5">간편한 3단계로 시작하세요</h2>
           </div>
 
           <div className="grid md:grid-cols-5 gap-6 md:gap-4 items-start">
@@ -162,8 +161,10 @@ export default function Home() {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
                 </svg>
               </div>
-              <p className="font-bold text-gray-900 mb-2 text-lg">010-5811-5297 문의</p>
-              <p className="text-sm text-gray-500 leading-relaxed">현장 상황과 필요한 작업 내용을 알려주세요. 가장 적합한 견적을 바로 추천해드립니다</p>
+              <p className="font-bold text-gray-900 mb-3 text-lg">010-5811-5297 문의</p>
+              <p className="text-[15px] text-gray-500" style={{ lineHeight: '1.75' }}>
+                현장 상황과 필요한 작업 내용을 알려주세요. 가장 적합한 견적을 바로 추천해드립니다
+              </p>
             </div>
 
             <div className="process-arrow pt-10">
@@ -179,8 +180,10 @@ export default function Home() {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
                 </svg>
               </div>
-              <p className="font-bold text-gray-900 mb-2 text-lg">담당자 배정</p>
-              <p className="text-sm text-gray-500 leading-relaxed">요청 내용을 바탕으로 전담 담당자가 배정됩니다. 신속한 소통으로 작업 준비를 완성합니다</p>
+              <p className="font-bold text-gray-900 mb-3 text-lg">담당자 배정</p>
+              <p className="text-[15px] text-gray-500" style={{ lineHeight: '1.75' }}>
+                요청 내용을 바탕으로 전담 담당자가 배정됩니다. 신속한 소통으로 작업 준비를 완성합니다
+              </p>
             </div>
 
             <div className="process-arrow pt-10">
@@ -196,8 +199,10 @@ export default function Home() {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M11.42 15.17l-5.1-5.1m0 0L11.42 4.97m-5.1 5.1H21M3 21h18" />
                 </svg>
               </div>
-              <p className="font-bold text-gray-900 mb-2 text-lg">작업 진행</p>
-              <p className="text-sm text-gray-500 leading-relaxed">안전 기준을 준수하며 계획된 일정에 맞춰 작업을 수행합니다. 높은 완성도와 만족도를 보장합니다</p>
+              <p className="font-bold text-gray-900 mb-3 text-lg">작업 진행</p>
+              <p className="text-[15px] text-gray-500" style={{ lineHeight: '1.75' }}>
+                안전 기준을 준수하며 계획된 일정에 맞춰 작업을 수행합니다. 높은 완성도와 만족도를 보장합니다
+              </p>
             </div>
           </div>
         </div>
@@ -207,7 +212,7 @@ export default function Home() {
       <section id="about" className="section-padding">
         <div className="max-w-container">
           {/* Work Photo */}
-          <div className="relative h-[28rem] rounded-2xl overflow-hidden mb-16 group shadow-card">
+          <div className="relative h-[28rem] rounded-2xl overflow-hidden mb-20 group shadow-card">
             <Image src="/images/work-photo.jpg" alt="작업 현장" fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent flex items-end p-8 md:p-12">
               <Link
@@ -222,28 +227,28 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-12 items-start">
+          <div className="grid md:grid-cols-2 gap-16 items-start">
             {/* Left - Text */}
             <div>
               <span className="section-badge">회사 소개</span>
-              <h2 className="section-title mb-6">
+              <h2 className="section-title mb-8">
                 높은 곳의 작업,<br />
                 우승이 더 안전하게 만듭니다
               </h2>
-              <p className="text-lg text-gray-600 leading-relaxed">
+              <p className="text-[17px] text-gray-600" style={{ lineHeight: '1.85' }}>
                 우승 스카이차는 다양한 현장에 최적화된 스카이차·고소작업 장비를 제공합니다. 숙련된 전문 스탭이 직접 현장을 검토하고, 안전한 작업 진행을 위해 체계적으로 대응합니다. 신속한 출동과 높은 작업 완성도로 고객 만족을 최우선으로 하고 있습니다.
               </p>
             </div>
 
             {/* Right - Checklist */}
-            <div className="space-y-4 md:pt-12">
+            <div className="space-y-5 md:pt-14">
               <div className="check-item">
                 <div className="check-icon">
                   <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
-                <p className="text-gray-800 font-medium">경력과 자격을 갖춘 전문 스탭 운용</p>
+                <p className="text-gray-800 font-medium text-[16px]">경력과 자격을 갖춘 전문 스탭 운용</p>
               </div>
               <div className="check-item">
                 <div className="check-icon">
@@ -251,7 +256,7 @@ export default function Home() {
                     <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
-                <p className="text-gray-800 font-medium">정기 점검된 안정적인 스카이차 보유</p>
+                <p className="text-gray-800 font-medium text-[16px]">정기 점검된 안정적인 스카이차 보유</p>
               </div>
               <div className="check-item">
                 <div className="check-icon">
@@ -259,7 +264,7 @@ export default function Home() {
                     <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
-                <p className="text-gray-800 font-medium">신속한 출동, 투명한 견적 안내</p>
+                <p className="text-gray-800 font-medium text-[16px]">신속한 출동, 투명한 견적 안내</p>
               </div>
             </div>
           </div>
@@ -270,17 +275,18 @@ export default function Home() {
       <section id="faq" className="bg-gray-50 section-padding">
         <div className="max-w-container">
           <div className="max-w-2xl mx-auto">
-            <div className="text-center mb-12">
+            <div className="text-center mb-14">
               <span className="section-badge">FAQ</span>
-              <h2 className="section-title mb-4">
+              <h2 className="section-title mb-5">
                 자주 묻는 질문을 모았습니다
               </h2>
-              <p className="section-subtitle mx-auto">
-                고객님들이 가장 많이 문의하시는 내용을 정리했습니다. 혹시 찾으시는 답변이 없다면 언제든지 문의해주세요.
+              <p className="section-desc mx-auto mb-5">
+                고객님들이 가장 많이 문의하시는 내용을 정리했습니다.<br className="hidden sm:block" />
+                혹시 찾으시는 답변이 없다면 언제든지 문의해주세요.
               </p>
               <button
                 onClick={() => scrollToSection('contact')}
-                className="mt-4 text-primary font-semibold hover:text-primary-dark transition-colors inline-flex items-center gap-1"
+                className="text-primary font-semibold hover:text-primary-dark transition-colors inline-flex items-center gap-1.5 text-[15px]"
               >
                 문의하기
                 <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -296,7 +302,7 @@ export default function Home() {
                     onClick={() => setExpandedFAQ(expandedFAQ === index ? null : index)}
                     className="accordion-header w-full"
                   >
-                    <span className="font-semibold text-left text-gray-900">{item.question}</span>
+                    <span className="font-semibold text-left text-gray-900 text-[16px]">{item.question}</span>
                     <span className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${expandedFAQ === index ? 'bg-primary text-white rotate-180' : 'bg-gray-100 text-gray-500'}`}>
                       <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
@@ -315,14 +321,14 @@ export default function Home() {
 
       {/* ===== Reviews Section ===== */}
       <section id="reviews" className="bg-white section-padding overflow-hidden">
-        <div className="max-w-container mb-14">
+        <div className="max-w-container mb-16">
           <div className="text-center">
             <span className="section-badge">고객 후기</span>
-            <h2 className="section-title mb-4">
+            <h2 className="section-title mb-5">
               고객님들의 실제 후기를 소개합니다
             </h2>
-            <p className="section-subtitle mx-auto">
-              우승 스카이차를 이용해주신 고객님들의 경험을 바탕으로
+            <p className="section-desc mx-auto">
+              우승 스카이차를 이용해주신 고객님들의 경험을 바탕으로<br className="hidden sm:block" />
               더 안전하고 신뢰할 수 있는 서비스를 만들어가고 있습니다.
             </p>
           </div>
@@ -332,7 +338,7 @@ export default function Home() {
           <div className="marquee-track">
             {[...reviews, ...reviews, ...reviews, ...reviews].map((review, index) => (
               <div key={index} className="review-card">
-                <div className="flex gap-1 mb-3">
+                <div className="flex gap-1 mb-4">
                   {[...Array(5)].map((_, i) => (
                     <svg key={i} xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
                       <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
@@ -340,17 +346,17 @@ export default function Home() {
                   ))}
                 </div>
 
-                <p className="text-gray-700 text-sm leading-relaxed mb-5 flex-1">
+                <p className="text-gray-700 text-[15px] mb-6 flex-1" style={{ lineHeight: '1.8' }}>
                   &ldquo;{review.text}&rdquo;
                 </p>
 
-                <div className="flex items-center gap-3 pt-4 border-t border-gray-100">
-                  <div className="relative w-10 h-10 rounded-full overflow-hidden flex-shrink-0 ring-2 ring-blue-100">
+                <div className="flex items-center gap-3 pt-5 border-t border-gray-100">
+                  <div className="relative w-11 h-11 rounded-full overflow-hidden flex-shrink-0 ring-2 ring-blue-100">
                     <Image src={review.photo} alt={review.name} fill className="object-cover" />
                   </div>
                   <div>
-                    <p className="font-semibold text-gray-900 text-sm">{review.name}</p>
-                    <p className="text-xs text-green-600 font-medium">Review on NAVER</p>
+                    <p className="font-semibold text-gray-900 text-[15px]">{review.name}</p>
+                    <p className="text-xs text-green-600 font-medium mt-0.5">Review on NAVER</p>
                   </div>
                 </div>
               </div>
@@ -361,33 +367,32 @@ export default function Home() {
 
       {/* ===== Contact Section ===== */}
       <section id="contact" className="relative overflow-hidden">
-        {/* Background */}
         <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900" />
         <div className="absolute inset-0">
           <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
         </div>
 
-        <div className="max-w-container relative z-10 py-20 md:py-28">
-          <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div className="max-w-container relative z-10 py-24 md:py-32">
+          <div className="grid md:grid-cols-2 gap-16 lg:gap-24 items-center">
             <div className="text-white">
-              <span className="inline-block text-sm font-medium bg-white/10 backdrop-blur-sm px-4 py-1.5 rounded-full mb-6 tracking-wide text-blue-200">
+              <span className="inline-block text-sm font-medium bg-white/10 backdrop-blur-sm px-5 py-2 rounded-full mb-8 tracking-wide text-blue-200">
                 문의하기
               </span>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-7">
                 함께 안전하고 완성도<br />
                 높은 작업을 만들어가요!
               </h2>
-              <p className="text-gray-400 text-lg leading-relaxed mb-8">
+              <p className="text-gray-400 text-lg mb-10" style={{ lineHeight: '1.8' }}>
                 스카이차가 필요한 작업이 있으신가요?<br />
                 현장 상담부터 출동까지, 우승 스카이차가 빠르고 정확하게 도와드립니다.
               </p>
 
               <a
                 href="tel:010-5811-5297"
-                className="inline-flex items-center gap-3 text-2xl font-bold text-white hover:text-accent transition-colors"
+                className="inline-flex items-center gap-4 text-2xl font-bold text-white hover:text-accent transition-colors"
               >
-                <span className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center">
+                <span className="w-14 h-14 rounded-full bg-primary/20 flex items-center justify-center">
                   <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                   </svg>
@@ -396,34 +401,30 @@ export default function Home() {
               </a>
             </div>
 
-            <div className="bg-white/5 backdrop-blur-xl p-8 md:p-10 rounded-2xl border border-white/10">
-              <h3 className="text-white text-xl font-bold mb-6">빠른 문의</h3>
-              <form onSubmit={handleFormSubmit} className="space-y-4">
-                <div>
-                  <input
-                    type="tel"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleFormChange}
-                    required
-                    className="w-full px-5 py-3.5 bg-white/10 text-white rounded-xl border border-white/10 focus:border-primary focus:ring-2 focus:ring-primary/30 focus:outline-none placeholder-gray-400 transition-all"
-                    placeholder="전화번호"
-                  />
-                </div>
-                <div>
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleFormChange}
-                    required
-                    className="w-full px-5 py-3.5 bg-white/10 text-white rounded-xl border border-white/10 focus:border-primary focus:ring-2 focus:ring-primary/30 focus:outline-none placeholder-gray-400 transition-all"
-                    placeholder="이메일"
-                  />
-                </div>
+            <div className="bg-white/5 backdrop-blur-xl p-10 md:p-12 rounded-2xl border border-white/10">
+              <h3 className="text-white text-xl font-bold mb-8">빠른 문의</h3>
+              <form onSubmit={handleFormSubmit} className="space-y-5">
+                <input
+                  type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleFormChange}
+                  required
+                  className="w-full px-5 py-4 bg-white/10 text-white rounded-xl border border-white/10 focus:border-primary focus:ring-2 focus:ring-primary/30 focus:outline-none placeholder-gray-400 transition-all text-[16px]"
+                  placeholder="전화번호"
+                />
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleFormChange}
+                  required
+                  className="w-full px-5 py-4 bg-white/10 text-white rounded-xl border border-white/10 focus:border-primary focus:ring-2 focus:ring-primary/30 focus:outline-none placeholder-gray-400 transition-all text-[16px]"
+                  placeholder="이메일"
+                />
                 <button
                   type="submit"
-                  className="w-full btn-accent py-3.5 rounded-xl text-base"
+                  className="w-full btn-accent py-4 rounded-xl text-base mt-2"
                 >
                   문의하기
                 </button>
@@ -434,7 +435,7 @@ export default function Home() {
       </section>
 
       {/* ===== Footer ===== */}
-      <footer className="bg-gray-950 text-gray-400 py-10 border-t border-gray-800">
+      <footer className="bg-gray-950 text-gray-400 py-12 border-t border-gray-800">
         <div className="max-w-container">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-2">

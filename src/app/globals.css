@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #ffffff;
+}
+
+.gradient-blue {
+  background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%);
+}
+
+.btn-accent {
+  @apply bg-accent text-black hover:bg-yellow-400 transition-colors;
+}
+
+.section-padding {
+  @apply py-16 md:py-24;
+}
+
+.max-w-container {
+  @apply max-w-7xl mx-auto px-4 md:px-6 lg:px-8;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2563eb;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #1e40af;
+}
+
+/* Accordion styles */
+.accordion-item {
+  @apply border-b border-gray-200;
+}
+
+.accordion-header {
+  @apply cursor-pointer py-4 flex justify-between items-center hover:bg-gray-50 transition-colors px-4;
+}
+
+.accordion-content {
+  @apply overflow-hidden transition-all duration-300;
+}
+
+.accordion-body {
+  @apply px-4 py-4 text-gray-700 bg-gray-50;
+}
+
+/* Review card styles */
+.review-card {
+  @apply bg-white rounded-lg p-6 shadow-md flex-shrink-0 w-full sm:w-96;
+}
+
+.star-rating {
+  @apply flex gap-0.5;
+}
+
+.star {
+  @apply text-yellow-400 text-lg;
+}
+
+/* Process step styles */
+.process-step {
+  @apply flex flex-col items-center text-center;
+}
+
+.process-icon {
+  @apply w-16 h-16 rounded-full bg-accent flex items-center justify-center mb-4;
+}
+
+.arrow-separator {
+  @apply hidden md:block text-2xl text-gray-400 mx-4;
+}

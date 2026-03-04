@@ -152,7 +152,7 @@
 }
 
 .process-icon {
-  @apply w-[72px] h-[72px] rounded-2xl flex items-center justify-center mb-6 shadow-xl text-white transition-all duration-400;
+  @apply w-[72px] h-[72px] rounded-2xl flex items-center justify-center mb-6 shadow-xl text-white transition-all duration-[400ms];
   background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
 }
 

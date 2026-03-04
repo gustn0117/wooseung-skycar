@@ -18,11 +18,15 @@
 
   h1, h2, h3, h4, h5, h6 {
     line-height: 1.3;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.025em;
   }
 
   p {
     line-height: 1.85;
+  }
+
+  ::selection {
+    @apply bg-primary/20 text-primary;
   }
 }
 
@@ -37,26 +41,30 @@
 
 /* ===== Gradients ===== */
 .gradient-blue {
-  background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #3b82f6 100%);
+  background: linear-gradient(145deg, #0f2557 0%, #1e40af 40%, #2563eb 70%, #3b82f6 100%);
 }
 
 /* ===== Buttons ===== */
 .btn-accent {
-  @apply bg-accent text-gray-900 font-semibold hover:bg-accent-hover transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5;
+  @apply bg-accent text-gray-900 font-bold hover:bg-accent-hover transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:scale-[0.98];
 }
 
 .btn-primary {
-  @apply bg-primary text-white font-semibold hover:bg-primary-dark transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5;
+  @apply bg-primary text-white font-bold hover:bg-primary-dark transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:scale-[0.98];
+}
+
+.btn-outline-white {
+  @apply border-2 border-white/30 text-white font-semibold hover:bg-white/10 hover:border-white/50 transition-all duration-200 active:scale-[0.98];
 }
 
 /* ===== Navigation ===== */
 .nav-link {
-  @apply text-gray-600 hover:text-primary transition-colors duration-200 text-[15px] font-medium relative;
+  @apply text-gray-600 hover:text-primary transition-colors duration-200 text-[15px] font-medium relative py-1;
 }
 
 .nav-link::after {
   content: '';
-  @apply absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-200;
+  @apply absolute -bottom-0.5 left-0 w-0 h-[2px] bg-primary rounded-full transition-all duration-300;
 }
 
 .nav-link:hover::after {
@@ -64,41 +72,29 @@
 }
 
 /* ===== Custom scrollbar ===== */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: #f8fafc;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #2563eb;
-}
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #f8fafc; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #2563eb; }
 
 /* ===== Section headers ===== */
 .section-badge {
-  @apply inline-block text-sm font-semibold text-primary bg-blue-50 px-4 py-1.5 rounded-full mb-5 tracking-wide uppercase;
+  @apply inline-block text-xs font-bold text-primary bg-primary/8 px-4 py-1.5 rounded-full mb-5 tracking-[0.15em] uppercase border border-primary/10;
 }
 
 .section-title {
-  @apply text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-gray-900;
-  line-height: 1.25;
+  @apply text-3xl md:text-4xl lg:text-[2.75rem] font-extrabold text-gray-900;
+  line-height: 1.2;
 }
 
 .section-desc {
   @apply text-[17px] text-gray-500 max-w-2xl;
-  line-height: 1.8;
+  line-height: 1.85;
 }
 
-/* ===== Accordion styles ===== */
+/* ===== Accordion ===== */
 .accordion-item {
-  @apply border border-gray-100 rounded-xl mb-3 overflow-hidden bg-white shadow-soft transition-all duration-200 hover:shadow-card;
+  @apply border border-gray-100 rounded-2xl mb-3 overflow-hidden bg-white shadow-soft transition-all duration-300 hover:border-gray-200;
 }
 
 .accordion-header {
@@ -106,7 +102,7 @@
 }
 
 .accordion-content {
-  @apply overflow-hidden transition-all duration-300;
+  @apply overflow-hidden transition-all duration-300 ease-in-out;
 }
 
 .accordion-body {
@@ -115,23 +111,29 @@
   line-height: 1.85;
 }
 
-/* ===== Review card styles ===== */
+/* ===== Review card ===== */
 .review-card {
-  @apply bg-white rounded-2xl p-7 shadow-card flex-shrink-0 w-[340px] flex flex-col border border-gray-100 hover:shadow-card-hover transition-shadow duration-300;
+  @apply bg-white rounded-2xl p-7 flex-shrink-0 w-[340px] flex flex-col border border-gray-100 transition-all duration-300;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 6px 16px rgba(0,0,0,0.04);
 }
 
-/* ===== Marquee animation ===== */
+.review-card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06), 0 12px 28px rgba(0,0,0,0.08);
+  transform: translateY(-2px);
+}
+
+/* ===== Marquee ===== */
 .marquee-container {
   overflow: hidden;
   width: 100%;
-  mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
-  -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
 }
 
 .marquee-track {
   display: flex;
-  gap: 1.5rem;
-  animation: marquee 50s linear infinite;
+  gap: 1.25rem;
+  animation: marquee 60s linear infinite;
   width: max-content;
 }
 
@@ -144,13 +146,19 @@
   100% { transform: translateX(-50%); }
 }
 
-/* ===== Process step styles ===== */
+/* ===== Process step ===== */
 .process-step {
   @apply flex flex-col items-center text-center px-2;
 }
 
 .process-icon {
-  @apply w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center mb-6 shadow-lg text-white transition-transform duration-300 hover:scale-110 hover:-rotate-3;
+  @apply w-[72px] h-[72px] rounded-2xl flex items-center justify-center mb-6 shadow-xl text-white transition-all duration-400;
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+}
+
+.process-step:hover .process-icon {
+  transform: scale(1.08) rotate(-3deg);
+  box-shadow: 0 8px 30px -5px rgba(37, 99, 235, 0.4);
 }
 
 .process-arrow {
@@ -159,9 +167,25 @@
 
 /* ===== Check item ===== */
 .check-item {
-  @apply flex items-center gap-5 p-5 rounded-xl bg-blue-50/50 border border-blue-100/50;
+  @apply flex items-center gap-5 p-5 rounded-2xl bg-gradient-to-r from-blue-50 to-blue-50/30 border border-blue-100/60 transition-all duration-200 hover:shadow-md hover:border-blue-200/60;
 }
 
 .check-icon {
-  @apply w-9 h-9 rounded-full bg-primary flex items-center justify-center flex-shrink-0 text-white;
+  @apply w-10 h-10 rounded-xl bg-primary flex items-center justify-center flex-shrink-0 text-white shadow-md;
+}
+
+/* ===== Stat ===== */
+.stat-number {
+  @apply text-4xl md:text-5xl font-extrabold text-primary;
+  line-height: 1;
+}
+
+/* ===== Divider dot ===== */
+.dot-divider {
+  @apply w-1.5 h-1.5 rounded-full bg-gray-300 mx-3;
+}
+
+/* ===== Footer link ===== */
+.footer-link {
+  @apply text-gray-400 hover:text-white transition-colors duration-200;
 }

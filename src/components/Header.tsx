@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 interface HeaderProps {
-  activePage?: 'home' | 'about';
+  activePage?: 'home' | 'about' | 'cases';
 }
 
 export default function Header({ activePage = 'home' }: HeaderProps) {
@@ -43,6 +43,9 @@ export default function Header({ activePage = 'home' }: HeaderProps) {
             <Link href="/about" className={`nav-link ${activePage === 'about' ? 'text-primary !font-semibold after:!w-full' : ''}`}>
               회사소개
             </Link>
+            <Link href="/cases" className={`nav-link ${activePage === 'cases' ? 'text-primary !font-semibold after:!w-full' : ''}`}>
+              시공사례
+            </Link>
             <button onClick={() => scrollToSection('services')} className="nav-link">서비스 안내</button>
             <button onClick={() => scrollToSection('contact')} className="nav-link">문의하기</button>
           </div>
@@ -76,6 +79,9 @@ export default function Header({ activePage = 'home' }: HeaderProps) {
           <div className="px-6 pb-6 pt-2 space-y-1 border-t border-gray-100">
             <Link href="/about" className="block py-3 text-gray-700 hover:text-primary font-medium transition-colors" onClick={() => setMobileOpen(false)}>
               회사소개
+            </Link>
+            <Link href="/cases" className="block py-3 text-gray-700 hover:text-primary font-medium transition-colors" onClick={() => setMobileOpen(false)}>
+              시공사례
             </Link>
             <button onClick={() => scrollToSection('services')} className="block w-full text-left py-3 text-gray-700 hover:text-primary font-medium transition-colors">
               서비스 안내

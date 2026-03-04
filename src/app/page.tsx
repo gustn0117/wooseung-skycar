@@ -171,7 +171,7 @@ export default function Home() {
       {/* Process Section */}
       <section id="services" className="bg-gray-50 section-padding">
         <div className="max-w-container">
-          <div className="grid md:grid-cols-3 gap-8 items-center">
+          <div className="grid grid-cols-3 md:grid-cols-5 gap-4 md:gap-8 items-center">
             {/* Step 1 */}
             <div className="process-step">
               <div className="process-icon">
@@ -180,7 +180,7 @@ export default function Home() {
               <p className="text-center font-semibold text-gray-800">010-5811-5297 문의</p>
             </div>
 
-            <div className="arrow-separator">→</div>
+            <div className="hidden md:flex items-center justify-center text-2xl text-gray-400">→</div>
 
             {/* Step 2 */}
             <div className="process-step">
@@ -190,7 +190,7 @@ export default function Home() {
               <p className="text-center font-semibold text-gray-800">담당자 배정</p>
             </div>
 
-            <div className="arrow-separator">→</div>
+            <div className="hidden md:flex items-center justify-center text-2xl text-gray-400">→</div>
 
             {/* Step 3 */}
             <div className="process-step">

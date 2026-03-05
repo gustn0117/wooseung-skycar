@@ -29,23 +29,23 @@ export default function AboutPage() {
           <div className="absolute -bottom-60 -left-60 w-[600px] h-[600px] bg-blue-400/[0.06] rounded-full blur-3xl" />
         </div>
 
-        <div className="max-w-container flex flex-col md:flex-row items-center gap-12 py-24 md:py-32 relative z-10">
+        <div className="max-w-container flex flex-col lg:flex-row items-center gap-14 pt-20 pb-32 md:pt-28 md:pb-44 relative z-10">
           <div className="flex-1">
             <FadeIn>
-              <span className="inline-flex items-center gap-2 text-sm font-medium bg-white/[0.12] backdrop-blur-sm px-5 py-2 rounded-full mb-8">
+              <span className="inline-flex items-center gap-2 text-sm font-medium bg-white/[0.12] backdrop-blur-sm px-5 py-2.5 rounded-full mb-8 border border-white/10">
                 빠른 출동, 전문 장비, 숙련된 스탭
               </span>
             </FadeIn>
             <FadeIn delay={100}>
-              <h1 className="text-4xl md:text-5xl lg:text-[3.5rem] font-extrabold mb-5" style={{ lineHeight: '1.15' }}>회사 소개</h1>
+              <h1 className="text-4xl md:text-5xl lg:text-[3.5rem] font-extrabold mb-6" style={{ lineHeight: '1.15' }}>회사 소개</h1>
             </FadeIn>
             <FadeIn delay={200}>
-              <p className="text-lg md:text-xl text-blue-100 max-w-lg" style={{ lineHeight: '1.75' }}>
+              <p className="text-lg md:text-xl text-blue-100 max-w-lg" style={{ lineHeight: '1.85' }}>
                 우승 스카이차는 어떤 현장에서도 최고의 결과를 만듭니다
               </p>
             </FadeIn>
           </div>
-          <FadeIn direction="right" delay={200} className="flex-1 hidden md:block relative h-80">
+          <FadeIn direction="right" delay={200} className="flex-1 hidden lg:block relative h-80">
             <Image src="/images/truck.png" alt="우승 스카이차" fill className="object-contain drop-shadow-2xl" priority />
           </FadeIn>
         </div>
@@ -60,21 +60,21 @@ export default function AboutPage() {
       {/* ===== About Content ===== */}
       <section className="section-padding">
         <div className="max-w-container">
-          <div className="grid md:grid-cols-2 gap-16 lg:gap-24 items-start">
+          <div className="grid md:grid-cols-2 gap-16 lg:gap-28 items-start">
             <FadeIn direction="left">
               <span className="section-badge">About Us</span>
-              <h2 className="section-title mb-6">
+              <h2 className="section-title mb-7">
                 안전한 작업, 정확한 결과<br />
                 우승 스카이차가 책임집니다
               </h2>
-              <p className="text-primary font-bold text-lg" style={{ lineHeight: '1.7' }}>
+              <p className="text-primary font-bold text-lg" style={{ lineHeight: '1.8' }}>
                 정확한 현장 분석과 빠른 대응으로<br className="hidden md:block" />
                 고객에게 최상의 결과를 약속드립니다
               </p>
             </FadeIn>
 
             <FadeIn direction="right" delay={150}>
-              <div className="space-y-7 text-gray-600 text-[17px]" style={{ lineHeight: '1.9' }}>
+              <div className="space-y-8 text-gray-600 text-[17px]" style={{ lineHeight: '2.05' }}>
                 <p>
                   우승 스카이차는 다양한 현장에서 요구되는 고소작업을
                   더 안전하게, 더 전문적으로, 더 빠르게 해결하기 위해 만들어진 전문 스카이차 서비스 기업입니다.
@@ -111,8 +111,8 @@ export default function AboutPage() {
                       {val.icon}
                     </svg>
                   </div>
-                  <h3 className="font-bold text-gray-900 text-xl mb-3">{val.title}</h3>
-                  <p className="text-gray-500 text-[16px]" style={{ lineHeight: '1.8' }}>{val.desc}</p>
+                  <h3 className="font-bold text-gray-900 text-xl mb-4">{val.title}</h3>
+                  <p className="text-gray-500 text-[16px]" style={{ lineHeight: '1.95' }}>{val.desc}</p>
                 </div>
               </FadeIn>
             ))}
@@ -132,11 +132,12 @@ export default function AboutPage() {
             {steps.map((step, index) => (
               <FadeIn key={index} delay={index * 120}>
                 <div className="relative bg-gray-50 rounded-3xl p-10 border border-gray-100 hover:bg-white hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group h-full">
+                  <span className="text-xs font-bold text-gray-300 tracking-widest mb-3 block">0{index + 1}</span>
                   <div className="w-14 h-14 rounded-2xl bg-primary text-white flex items-center justify-center font-extrabold text-xl mb-7 group-hover:scale-110 transition-transform shadow-lg">
                     {index + 1}
                   </div>
-                  <h3 className="font-bold text-gray-900 text-lg mb-3">{step.label}</h3>
-                  <p className="text-gray-500 text-[15px]" style={{ lineHeight: '1.8' }}>{step.desc}</p>
+                  <h3 className="font-bold text-gray-900 text-lg mb-4">{step.label}</h3>
+                  <p className="text-gray-500 text-[15px]" style={{ lineHeight: '1.9' }}>{step.desc}</p>
                   {index < steps.length - 1 && (
                     <div className="hidden md:block absolute top-1/2 -right-4 -translate-y-1/2 text-gray-300 z-10">
                       <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
@@ -157,8 +158,8 @@ export default function AboutPage() {
           <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-white/[0.04] rounded-full blur-3xl" />
         </div>
         <FadeIn className="max-w-container text-center text-white relative z-10">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-6" style={{ lineHeight: '1.2' }}>작업이 필요하신가요?</h2>
-          <p className="text-blue-100 text-lg mb-10 max-w-xl mx-auto" style={{ lineHeight: '1.8' }}>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-7" style={{ lineHeight: '1.2' }}>작업이 필요하신가요?</h2>
+          <p className="text-blue-100 text-lg mb-12 max-w-xl mx-auto" style={{ lineHeight: '1.85' }}>
             현장 상담부터 출동까지,<br className="sm:hidden" /> 우승 스카이차가 빠르고 정확하게 도와드립니다.
           </p>
           <a href="tel:010-5811-5297" className="inline-flex items-center gap-3 btn-accent px-10 py-4 rounded-2xl text-lg">
@@ -180,8 +181,11 @@ export default function AboutPage() {
               </div>
               <span className="font-bold text-gray-300 text-lg">우승 스카이차</span>
             </div>
-            <span className="text-sm">대표전화: 010-5811-5297</span>
-            <p className="text-xs text-gray-600">&copy; 2024 우승 스카이차. All rights reserved.</p>
+            <div className="text-sm">
+              <span className="text-gray-500">대표전화</span>{' '}
+              <span className="text-gray-300 font-medium">010-5811-5297</span>
+            </div>
+            <p className="text-xs text-gray-600">&copy; 2025 우승 스카이차. All rights reserved.</p>
           </div>
         </div>
       </footer>

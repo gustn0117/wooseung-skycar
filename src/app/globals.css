@@ -456,3 +456,70 @@
   @apply absolute inset-0 rounded-full bg-primary/30;
   animation: pulseRing 2s ease-out infinite;
 }
+
+/* ===== Trust card ===== */
+.trust-card {
+  @apply bg-white rounded-2xl p-8 border border-gray-100 text-center transition-all duration-300 relative overflow-hidden;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.03), 0 4px 12px rgba(0,0,0,0.03);
+}
+
+.trust-card:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08), 0 12px 32px rgba(0,0,0,0.06);
+  transform: translateY(-3px);
+}
+
+.trust-card::after {
+  content: '';
+  @apply absolute bottom-0 left-0 right-0 h-[3px] bg-gradient-to-r from-primary via-blue-400 to-primary opacity-0 transition-opacity duration-300;
+}
+
+.trust-card:hover::after {
+  @apply opacity-100;
+}
+
+/* ===== Promise card ===== */
+.promise-card {
+  @apply relative bg-gradient-to-br from-white to-gray-50/80 rounded-3xl p-10 border border-gray-100 transition-all duration-300;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.04);
+}
+
+.promise-card:hover {
+  box-shadow: 0 8px 30px -5px rgba(0,0,0,0.1), 0 16px 40px -10px rgba(0,0,0,0.08);
+  transform: translateY(-4px);
+}
+
+/* ===== Gradient border glow ===== */
+.glow-border {
+  @apply relative;
+}
+
+.glow-border::before {
+  content: '';
+  @apply absolute -inset-[1px] rounded-3xl opacity-0 transition-opacity duration-500;
+  background: linear-gradient(135deg, #2563eb, #3b82f6, #60a5fa, #2563eb);
+  z-index: -1;
+}
+
+.glow-border:hover::before {
+  @apply opacity-100;
+}
+
+/* ===== Typing cursor ===== */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.cursor-blink {
+  animation: blink 1s infinite;
+}
+
+/* ===== Stagger children animation helper ===== */
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-slide-up {
+  animation: slideUp 0.5s ease-out forwards;
+}

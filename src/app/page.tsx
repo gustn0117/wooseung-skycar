@@ -46,7 +46,7 @@ function AnimatedCounter({ target, suffix = '', duration = 2000 }: { target: num
 
 export default function Home() {
   const [expandedFAQ, setExpandedFAQ] = useState<number | null>(0);
-  const [formData, setFormData] = useState({ phone: '', email: '' });
+  const [formData, setFormData] = useState({ name: '', phone: '', email: '', message: '' });
   const [recentCases, setRecentCases] = useState<CasePreview[]>([]);
 
   useEffect(() => {
@@ -303,6 +303,39 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ===== Why Choose Us / Trust ===== */}
+      <section className="bg-white section-padding relative">
+        <div className="absolute inset-0 gradient-mesh" />
+        <div className="max-w-container relative z-10">
+          <FadeIn className="text-center mb-20">
+            <span className="section-badge">Why Choose Us</span>
+            <h2 className="section-title mb-6"><span className="text-gradient">우승</span>을 선택해야 하는 이유</h2>
+            <p className="section-desc mx-auto">단순한 장비 대여가 아닌, 전문적인 고소작업 파트너를 제공합니다</p>
+          </FadeIn>
+
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { icon: <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />, title: '안전 인증', desc: '모든 장비 법적 검사 통과, 안전 기준 100% 준수' },
+              { icon: <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />, title: '당일 출동', desc: '긴급 요청 시 당일 현장 출동 가능' },
+              { icon: <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z" />, title: '투명한 견적', desc: '현장 확인 후 합리적인 가격 안내, 추가 비용 없음' },
+              { icon: <><path strokeLinecap="round" strokeLinejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" /></>, title: '전문 인력', desc: '다년간 경험의 전문 기사가 직접 작업 수행' },
+            ].map((item, i) => (
+              <FadeIn key={i} delay={i * 100}>
+                <div className="trust-card group">
+                  <div className="w-14 h-14 rounded-2xl bg-primary/[0.07] flex items-center justify-center mx-auto mb-6 group-hover:bg-primary/[0.12] transition-colors duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="w-7 h-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                      {item.icon}
+                    </svg>
+                  </div>
+                  <h3 className="font-bold text-gray-900 text-lg mb-3">{item.title}</h3>
+                  <p className="text-gray-500 text-sm" style={{ lineHeight: '1.8' }}>{item.desc}</p>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ===== Recent Cases Preview ===== */}
       {recentCases.length > 0 && (
         <section className="bg-white section-padding relative">
@@ -463,6 +496,43 @@ export default function Home() {
             ))}
           </div>
         </div>
+
+        {/* Reverse direction row */}
+        <div className="marquee-container">
+          <div className="marquee-track-reverse">
+            {[...reviews.slice().reverse(), ...reviews.slice().reverse(), ...reviews.slice().reverse(), ...reviews.slice().reverse()].map((review, index) => (
+              <div key={index} className="review-card">
+                <div className="text-primary/10 mb-4">
+                  <svg className="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10H14.017zM0 21v-7.391c0-5.704 3.731-9.57 8.983-10.609L9.978 5.151c-2.432.917-3.995 3.638-3.995 5.849h4v10H0z" />
+                  </svg>
+                </div>
+                <div className="flex gap-0.5 mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} className="w-[18px] h-[18px] text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
+                <p className="text-gray-700 text-[15px] mb-7 flex-1" style={{ lineHeight: '1.95' }}>
+                  &ldquo;{review.text}&rdquo;
+                </p>
+                <div className="flex items-center gap-3.5 pt-5 border-t border-gray-100">
+                  <div className="relative w-11 h-11 rounded-full overflow-hidden flex-shrink-0 ring-2 ring-gray-100">
+                    <Image src={review.photo} alt={review.name} fill className="object-cover" />
+                  </div>
+                  <div>
+                    <p className="font-bold text-gray-900 text-[15px]">{review.name}</p>
+                    <p className="text-[11px] text-gray-400 mt-0.5">{review.role}</p>
+                  </div>
+                  <div className="ml-auto">
+                    <span className="text-[10px] font-bold text-green-600 bg-green-50 px-2.5 py-1 rounded-full border border-green-100">NAVER</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* ===== Contact ===== */}
@@ -504,23 +574,70 @@ export default function Home() {
               <div className="glass-card p-10 md:p-12 rounded-3xl">
                 <h3 className="text-white text-xl font-bold mb-2">빠른 문의</h3>
                 <p className="text-gray-500 text-sm mb-8" style={{ lineHeight: '1.7' }}>연락처를 남겨주시면 빠르게 연락드립니다</p>
-                <form onSubmit={(e) => { e.preventDefault(); setFormData({ phone: '', email: '' }); alert('문의가 접수되었습니다!'); }} className="space-y-5">
+                <form onSubmit={(e) => { e.preventDefault(); setFormData({ name: '', phone: '', email: '', message: '' }); alert('문의가 접수되었습니다!'); }} className="space-y-4">
                   <input
-                    type="tel" name="phone" value={formData.phone} onChange={(e) => setFormData(p => ({ ...p, phone: e.target.value }))} required
+                    type="text" name="name" value={formData.name} onChange={(e) => setFormData(p => ({ ...p, name: e.target.value }))} required
                     className="w-full px-5 py-4 bg-white/[0.06] text-white rounded-2xl border border-white/[0.08] focus:border-primary focus:ring-2 focus:ring-primary/30 focus:outline-none placeholder-gray-500 transition-all text-[16px]"
-                    placeholder="전화번호"
+                    placeholder="이름 / 업체명"
                   />
-                  <input
-                    type="email" name="email" value={formData.email} onChange={(e) => setFormData(p => ({ ...p, email: e.target.value }))} required
-                    className="w-full px-5 py-4 bg-white/[0.06] text-white rounded-2xl border border-white/[0.08] focus:border-primary focus:ring-2 focus:ring-primary/30 focus:outline-none placeholder-gray-500 transition-all text-[16px]"
-                    placeholder="이메일"
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <input
+                      type="tel" name="phone" value={formData.phone} onChange={(e) => setFormData(p => ({ ...p, phone: e.target.value }))} required
+                      className="w-full px-5 py-4 bg-white/[0.06] text-white rounded-2xl border border-white/[0.08] focus:border-primary focus:ring-2 focus:ring-primary/30 focus:outline-none placeholder-gray-500 transition-all text-[16px]"
+                      placeholder="전화번호"
+                    />
+                    <input
+                      type="email" name="email" value={formData.email} onChange={(e) => setFormData(p => ({ ...p, email: e.target.value }))}
+                      className="w-full px-5 py-4 bg-white/[0.06] text-white rounded-2xl border border-white/[0.08] focus:border-primary focus:ring-2 focus:ring-primary/30 focus:outline-none placeholder-gray-500 transition-all text-[16px]"
+                      placeholder="이메일 (선택)"
+                    />
+                  </div>
+                  <textarea
+                    name="message" value={formData.message} onChange={(e) => setFormData(p => ({ ...p, message: e.target.value }))} rows={3}
+                    className="w-full px-5 py-4 bg-white/[0.06] text-white rounded-2xl border border-white/[0.08] focus:border-primary focus:ring-2 focus:ring-primary/30 focus:outline-none placeholder-gray-500 transition-all text-[16px] resize-none"
+                    placeholder="작업 내용을 간단히 적어주세요 (선택)"
                   />
-                  <button type="submit" className="w-full btn-accent py-4 rounded-2xl text-[16px] mt-2">문의하기</button>
+                  <button type="submit" className="w-full btn-accent py-4 rounded-2xl text-[16px] mt-1 flex items-center justify-center gap-2">
+                    문의하기
+                    <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
+                    </svg>
+                  </button>
                 </form>
               </div>
             </FadeIn>
           </div>
         </div>
+      </section>
+
+      {/* ===== CTA Banner ===== */}
+      <section className="gradient-blue relative overflow-hidden">
+        <div className="absolute inset-0 pattern-dots" />
+        <div className="absolute inset-0">
+          <div className="absolute -top-20 -right-20 w-[400px] h-[400px] bg-white/[0.04] rounded-full blur-3xl" />
+          <div className="absolute -bottom-20 -left-20 w-[300px] h-[300px] bg-blue-400/[0.06] rounded-full blur-3xl" />
+        </div>
+        <FadeIn className="max-w-container py-20 md:py-28 relative z-10">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-10">
+            <div className="text-center md:text-left">
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-white mb-4" style={{ lineHeight: '1.3' }}>
+                지금 바로 전문가와 상담하세요
+              </h2>
+              <p className="text-blue-100/60 text-lg">연중무휴 · 당일 출동 · 무료 현장 상담</p>
+            </div>
+            <div className="flex flex-col sm:flex-row items-center gap-4">
+              <a href="tel:010-5811-5297" className="inline-flex items-center gap-3 btn-accent px-10 py-4 rounded-2xl text-lg whitespace-nowrap">
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+                </svg>
+                010-5811-5297
+              </a>
+              <Link href="/cases" className="inline-flex items-center gap-2 btn-outline-white px-8 py-4 rounded-2xl text-[16px] whitespace-nowrap">
+                시공사례 보기
+              </Link>
+            </div>
+          </div>
+        </FadeIn>
       </section>
 
       {/* ===== Footer ===== */}

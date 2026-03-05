@@ -228,6 +228,41 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* ===== Our Promise ===== */}
+      <section className="bg-white section-padding relative">
+        <div className="absolute inset-0 gradient-mesh" />
+        <div className="max-w-container relative z-10">
+          <FadeIn className="text-center mb-20">
+            <span className="section-badge">Our Promise</span>
+            <h2 className="section-title mb-6">우승 스카이차의 <span className="text-gradient">약속</span></h2>
+            <p className="section-desc mx-auto">고객과의 신뢰를 바탕으로 모든 작업에서 지켜나갑니다</p>
+          </FadeIn>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              { num: '01', title: '안전 보장', desc: '모든 장비는 월 1회 이상 정기 점검을 실시하며, 작업자는 안전 교육을 이수한 전문 인력만 투입합니다.', icon: <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" /> },
+              { num: '02', title: '투명한 가격', desc: '현장 확인 후 합리적인 견적을 제시하며, 추가 비용 없는 정직한 가격 정책을 운영합니다.', icon: <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z" /> },
+              { num: '03', title: '책임 완수', desc: '작업이 완료될 때까지 책임지고, 불만족 시 재작업을 통해 고객 만족을 최우선으로 합니다.', icon: <path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" /> },
+            ].map((item, i) => (
+              <FadeIn key={i} delay={i * 150}>
+                <div className="promise-card h-full group">
+                  <div className="flex items-center gap-4 mb-6">
+                    <span className="text-primary/20 text-4xl font-extrabold">{item.num}</span>
+                    <div className="w-12 h-12 rounded-2xl bg-primary/[0.08] flex items-center justify-center group-hover:bg-primary group-hover:shadow-lg transition-all duration-300">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-primary group-hover:text-white transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                        {item.icon}
+                      </svg>
+                    </div>
+                  </div>
+                  <h3 className="font-bold text-gray-900 text-xl mb-4">{item.title}</h3>
+                  <p className="text-gray-500 text-[15px]" style={{ lineHeight: '1.95' }}>{item.desc}</p>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ===== CTA ===== */}
       <section className="gradient-blue section-padding relative overflow-hidden">
         <div className="absolute inset-0 pattern-dots" />

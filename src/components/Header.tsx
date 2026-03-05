@@ -11,9 +11,18 @@ interface HeaderProps {
 export default function Header({ activePage = 'home' }: HeaderProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [showBackToTop, setShowBackToTop] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    const onScroll = () => {
+      const y = window.scrollY;
+      setScrolled(y > 20);
+      setShowBackToTop(y > 600);
+
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      setScrollProgress(docHeight > 0 ? (y / docHeight) * 100 : 0);
+    };
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
@@ -27,9 +36,16 @@ export default function Header({ activePage = 'home' }: HeaderProps) {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <>
       <header className={`sticky top-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white/95 backdrop-blur-lg shadow-lg' : 'bg-white/80 backdrop-blur-md'}`}>
+        {/* Scroll progress bar */}
+        <div className="absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-primary via-blue-400 to-primary transition-all duration-150 ease-out" style={{ width: `${scrollProgress}%` }} />
+
         <nav className="max-w-container flex items-center justify-between py-4">
           <Link href="/" className="flex items-center gap-2.5 group">
             <div className="w-10 h-10 relative">
@@ -112,6 +128,17 @@ export default function Header({ activePage = 'home' }: HeaderProps) {
           <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
         </svg>
       </a>
+
+      {/* Back to top button */}
+      <button
+        onClick={scrollToTop}
+        className={`hidden sm:flex fixed bottom-8 right-8 z-40 w-12 h-12 bg-white text-gray-600 rounded-full shadow-lg border border-gray-200 items-center justify-center hover:bg-primary hover:text-white hover:border-primary hover:shadow-xl transition-all duration-300 ${showBackToTop ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'}`}
+        aria-label="위로 가기"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+        </svg>
+      </button>
     </>
   );
 }

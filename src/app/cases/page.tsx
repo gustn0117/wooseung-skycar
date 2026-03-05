@@ -65,8 +65,8 @@ export default function CasesPage() {
       <section className="gradient-blue text-white relative overflow-hidden">
         <div className="absolute inset-0 pattern-dots" />
         <div className="absolute inset-0">
-          <div className="absolute -top-40 -right-40 w-[500px] h-[500px] bg-white/[0.03] rounded-full blur-3xl" />
-          <div className="absolute -bottom-40 -left-40 w-[600px] h-[600px] bg-blue-400/[0.06] rounded-full blur-3xl" />
+          <div className="absolute -top-40 -right-40 w-[500px] h-[500px] bg-white/[0.03] rounded-full blur-3xl animate-float" />
+          <div className="absolute -bottom-40 -left-40 w-[600px] h-[600px] bg-blue-400/[0.06] rounded-full blur-3xl animate-float-delayed" />
         </div>
         <div className="max-w-container relative z-10 pt-20 pb-32 md:pt-28 md:pb-44">
           <FadeIn>
@@ -76,7 +76,9 @@ export default function CasesPage() {
             </span>
           </FadeIn>
           <FadeIn delay={100}>
-            <h1 className="text-4xl md:text-5xl lg:text-[3.5rem] font-extrabold mb-6" style={{ lineHeight: 1.15 }}>시공사례</h1>
+            <h1 className="text-4xl md:text-5xl lg:text-[3.5rem] font-extrabold mb-6" style={{ lineHeight: 1.15 }}>
+              <span className="text-gradient-gold">시공</span>사례
+            </h1>
           </FadeIn>
           <FadeIn delay={200}>
             <p className="text-blue-100/80 text-lg md:text-xl max-w-xl mb-10" style={{ lineHeight: 1.85 }}>
@@ -108,8 +110,9 @@ export default function CasesPage() {
       </section>
 
       {/* ===== Cases Content ===== */}
-      <section className="section-padding bg-white">
-        <div className="max-w-container">
+      <section className="section-padding bg-white relative">
+        <div className="absolute inset-0 pattern-grid" />
+        <div className="max-w-container relative z-10">
           {loading ? (
             /* Skeleton loading */
             <div className="space-y-8">
@@ -432,23 +435,70 @@ export default function CasesPage() {
       )}
 
       {/* ===== Footer ===== */}
-      <footer className="bg-gray-950 text-gray-400 py-16 border-t border-white/5">
-        <div className="max-w-container">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div className="flex items-center gap-3">
-              <div className="w-9 h-9 relative">
-                <Image src="/images/logo.png" alt="로고" fill className="object-contain opacity-40" />
+      <footer className="bg-gray-950 border-t border-white/5">
+        <div className="max-w-container py-20">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8 mb-16">
+            <div className="md:col-span-1">
+              <div className="flex items-center gap-2.5 mb-5">
+                <div className="w-9 h-9 relative">
+                  <Image src="/images/logo.png" alt="로고" fill className="object-contain opacity-60" />
+                </div>
+                <span className="font-bold text-white text-lg tracking-tight">우승스카이차</span>
               </div>
-              <span className="font-bold text-gray-300 text-lg tracking-tight">우승 스카이차</span>
+              <p className="footer-text mb-6">
+                안전하고 전문적인 고소작업 서비스를 제공하는 스카이차 전문 업체입니다.
+              </p>
+              <a href="tel:010-5811-5297" className="inline-flex items-center gap-2 text-primary font-semibold text-sm hover:text-blue-400 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+                </svg>
+                010-5811-5297
+              </a>
             </div>
-            <div className="flex items-center gap-6 text-sm">
-              <Link href="/" className="footer-link">홈</Link>
-              <Link href="/about" className="footer-link">회사소개</Link>
-              <span className="text-gray-600">|</span>
-              <span className="text-gray-500">대표전화</span>
-              <span className="font-semibold text-gray-300">010-5811-5297</span>
+
+            <div>
+              <h4 className="footer-heading">바로가기</h4>
+              <ul className="space-y-3">
+                <li><Link href="/" className="footer-link text-sm">홈</Link></li>
+                <li><Link href="/about" className="footer-link text-sm">회사소개</Link></li>
+              </ul>
             </div>
+
+            <div>
+              <h4 className="footer-heading">서비스</h4>
+              <ul className="space-y-3">
+                <li><span className="footer-text">간판 설치 · 철거</span></li>
+                <li><span className="footer-text">외벽 청소</span></li>
+                <li><span className="footer-text">CCTV · 통신 설비</span></li>
+                <li><span className="footer-text">고소 작업</span></li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="footer-heading">연락처</h4>
+              <ul className="space-y-3">
+                <li className="flex items-center gap-2.5 text-sm text-gray-400">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 text-gray-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+                  </svg>
+                  <span className="text-gray-300 font-medium">010-5811-5297</span>
+                </li>
+                <li className="flex items-start gap-2.5 text-sm text-gray-400">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 text-gray-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  연중무휴 · 빠른 출동
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="pt-8 border-t border-white/[0.06] flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-[11px] text-gray-600 tracking-wide">&copy; 2025 우승 스카이차. All rights reserved.</p>
+            <div className="flex items-center gap-1">
+              <span className="text-[11px] text-gray-700">Powered by</span>
+              <span className="text-[11px] text-gray-500 font-medium">Next.js</span>
+            </div>
           </div>
         </div>
       </footer>

@@ -1,14 +1,30 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Header from '@/components/Header';
 import FadeIn from '@/components/FadeIn';
 
+interface CasePreview {
+  id: number;
+  title: string;
+  location: string;
+  work_date: string | null;
+  image_urls: string[];
+}
+
 export default function Home() {
   const [expandedFAQ, setExpandedFAQ] = useState<number | null>(0);
   const [formData, setFormData] = useState({ phone: '', email: '' });
+  const [recentCases, setRecentCases] = useState<CasePreview[]>([]);
+
+  useEffect(() => {
+    fetch('/api/cases')
+      .then(res => res.json())
+      .then(data => setRecentCases((data as CasePreview[]).slice(0, 3)))
+      .catch(() => {});
+  }, []);
 
   const faqItems = [
     { question: "스카이차 기사님이 현장까지 함께 오시나요?", answer: "네, 모든 작업은 전문 스탭이 동행하여 안전하게 진행합니다. 현장 상황을 확인 후 최적의 작업 방식을 안내해드립니다." },
@@ -34,6 +50,7 @@ export default function Home() {
 
       {/* ===== Hero ===== */}
       <section className="gradient-blue text-white relative overflow-hidden">
+        <div className="absolute inset-0 pattern-dots" />
         <div className="absolute inset-0">
           <div className="absolute -top-40 -right-40 w-[600px] h-[600px] bg-white/[0.03] rounded-full blur-3xl" />
           <div className="absolute -bottom-60 -left-40 w-[500px] h-[500px] bg-blue-400/[0.06] rounded-full blur-3xl" />
@@ -97,12 +114,16 @@ export default function Home() {
           <FadeIn>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-6 -mt-10 relative z-10">
               {[
-                { number: '10+', label: '년 경력', sub: 'Years Experience' },
-                { number: '500+', label: '건 작업 완료', sub: 'Projects Done' },
-                { number: '24h', label: '빠른 출동', sub: 'Quick Response' },
-                { number: '100%', label: '안전 작업', sub: 'Safety Record' },
+                { number: '10+', label: '년 경력', sub: 'Years Experience', icon: <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" /> },
+                { number: '500+', label: '건 작업 완료', sub: 'Projects Done', icon: <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /> },
+                { number: '24h', label: '빠른 출동', sub: 'Quick Response', icon: <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" /> },
+                { number: '100%', label: '안전 작업', sub: 'Safety Record', icon: <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" /> },
               ].map((stat, i) => (
-                <div key={i} className="bg-white rounded-2xl p-6 md:p-8 text-center border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300" style={{ boxShadow: '0 2px 12px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.04)' }}>
+                <div key={i} className="bg-white rounded-2xl p-6 md:p-8 text-center border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative overflow-hidden group" style={{ boxShadow: '0 2px 12px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.04)' }}>
+                  <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-primary to-blue-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="w-10 h-10 rounded-xl bg-primary/[0.08] flex items-center justify-center mx-auto mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>{stat.icon}</svg>
+                  </div>
                   <p className="stat-number mb-2.5">{stat.number}</p>
                   <p className="text-gray-800 text-sm font-semibold">{stat.label}</p>
                   <p className="text-gray-400 text-[11px] mt-1 tracking-wide uppercase">{stat.sub}</p>
@@ -114,8 +135,9 @@ export default function Home() {
       </section>
 
       {/* ===== Process ===== */}
-      <section id="services" className="bg-gray-50 section-padding">
-        <div className="max-w-container">
+      <section id="services" className="bg-gray-50 section-padding relative">
+        <div className="absolute inset-0 pattern-grid" />
+        <div className="max-w-container relative z-10">
           <FadeIn className="text-center mb-20">
             <span className="section-badge">Service Process</span>
             <h2 className="section-title mb-6">간편한 3단계로 시작하세요</h2>
@@ -209,8 +231,75 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ===== Recent Cases Preview ===== */}
+      {recentCases.length > 0 && (
+        <section className="bg-gray-50 section-padding relative">
+          <div className="absolute inset-0 gradient-mesh" />
+          <div className="max-w-container relative z-10">
+            <FadeIn className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-14">
+              <div>
+                <span className="section-badge">Portfolio</span>
+                <h2 className="section-title">최근 시공사례</h2>
+              </div>
+              <Link href="/cases" className="inline-flex items-center gap-2 text-primary font-semibold hover:gap-3 transition-all text-[15px] group">
+                모든 사례 보기
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
+                </svg>
+              </Link>
+            </FadeIn>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
+              {recentCases.map((c, idx) => (
+                <FadeIn key={c.id} delay={idx * 100} direction="up">
+                  <Link href="/cases" className="case-card group block h-full">
+                    {c.image_urls && c.image_urls.length > 0 ? (
+                      <div className="relative h-56 overflow-hidden">
+                        <Image src={c.image_urls[0]} alt={c.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                        <div className="case-card-overlay">
+                          <span>
+                            <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                            </svg>
+                            자세히 보기
+                          </span>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="h-56 bg-gray-100 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="w-12 h-12 text-gray-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.41a2.25 2.25 0 013.182 0l2.909 2.91m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+                        </svg>
+                      </div>
+                    )}
+                    <div className="p-6">
+                      <div className="flex flex-wrap items-center gap-2 mb-3">
+                        {c.location && <span className="meta-badge meta-badge-location text-[11px]">
+                          <svg xmlns="http://www.w3.org/2000/svg" className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                          </svg>
+                          {c.location}
+                        </span>}
+                        {c.work_date && <span className="meta-badge meta-badge-date text-[11px]">
+                          <svg xmlns="http://www.w3.org/2000/svg" className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
+                          </svg>
+                          {c.work_date}
+                        </span>}
+                      </div>
+                      <h3 className="font-bold text-gray-900 text-[17px] group-hover:text-primary transition-colors">{c.title}</h3>
+                    </div>
+                  </Link>
+                </FadeIn>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* ===== FAQ ===== */}
-      <section id="faq" className="bg-gray-50 section-padding">
+      <section id="faq" className="bg-white section-padding">
         <div className="max-w-container">
           <div className="max-w-2xl mx-auto">
             <FadeIn className="text-center mb-16">
@@ -255,7 +344,7 @@ export default function Home() {
       </section>
 
       {/* ===== Reviews ===== */}
-      <section id="reviews" className="bg-white section-padding overflow-hidden">
+      <section id="reviews" className="bg-gray-50 section-padding overflow-hidden">
         <FadeIn className="max-w-container mb-16">
           <div className="text-center">
             <span className="section-badge">Reviews</span>
@@ -298,6 +387,7 @@ export default function Home() {
       {/* ===== Contact ===== */}
       <section id="contact" className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950" />
+        <div className="absolute inset-0 pattern-dots opacity-50" />
         <div className="absolute inset-0">
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[120px]" />
           <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-accent/5 rounded-full blur-[120px]" />
@@ -362,7 +452,10 @@ export default function Home() {
               </div>
               <span className="font-bold text-gray-300 text-lg tracking-tight">우승 스카이차</span>
             </div>
-            <div className="flex items-center gap-2 text-sm">
+            <div className="flex items-center gap-6 text-sm">
+              <Link href="/about" className="footer-link">회사소개</Link>
+              <Link href="/cases" className="footer-link">시공사례</Link>
+              <span className="text-gray-600">|</span>
               <span className="text-gray-500">대표전화</span>
               <span className="font-semibold text-gray-300">010-5811-5297</span>
             </div>

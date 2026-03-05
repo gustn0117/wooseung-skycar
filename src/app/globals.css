@@ -46,6 +46,26 @@
   background: linear-gradient(155deg, #0a1e4a 0%, #153080 30%, #1e40af 55%, #2563eb 80%, #3b82f6 100%);
 }
 
+.gradient-mesh {
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(37, 99, 235, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(59, 130, 246, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 60% 80%, rgba(37, 99, 235, 0.04) 0%, transparent 50%);
+}
+
+/* ===== Pattern backgrounds ===== */
+.pattern-dots {
+  background-image: radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.pattern-grid {
+  background-image:
+    linear-gradient(rgba(37, 99, 235, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(37, 99, 235, 0.03) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
 /* ===== Buttons ===== */
 .btn-accent {
   @apply bg-accent text-gray-900 font-bold hover:bg-accent-hover transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:scale-[0.97];
@@ -120,8 +140,17 @@
 
 /* ===== Review card ===== */
 .review-card {
-  @apply bg-white rounded-2xl p-7 sm:p-8 flex-shrink-0 w-[340px] sm:w-[380px] flex flex-col border border-gray-100 transition-all duration-300;
+  @apply bg-white rounded-2xl p-7 sm:p-8 flex-shrink-0 w-[340px] sm:w-[380px] flex flex-col border border-gray-100 transition-all duration-300 relative;
   box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 6px 16px rgba(0,0,0,0.03);
+}
+
+.review-card::before {
+  content: '';
+  @apply absolute top-0 left-0 right-0 h-[3px] rounded-t-2xl bg-gradient-to-r from-primary via-blue-400 to-primary opacity-0 transition-opacity duration-300;
+}
+
+.review-card:hover::before {
+  @apply opacity-100;
 }
 
 .review-card:hover {
@@ -187,7 +216,85 @@
   line-height: 1;
 }
 
+/* ===== Case card ===== */
+.case-card {
+  @apply bg-white rounded-2xl overflow-hidden border border-gray-100 transition-all duration-300 relative;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 6px 16px rgba(0,0,0,0.03);
+}
+
+.case-card::after {
+  content: '';
+  @apply absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-primary to-blue-400 opacity-0 transition-opacity duration-300;
+}
+
+.case-card:hover::after {
+  @apply opacity-100;
+}
+
+.case-card:hover {
+  box-shadow: 0 8px 30px -5px rgba(0,0,0,0.12), 0 16px 40px -10px rgba(0,0,0,0.1);
+  transform: translateY(-4px);
+}
+
+.case-card-overlay {
+  @apply absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end justify-center pb-6;
+}
+
+.case-card-overlay span {
+  @apply inline-flex items-center gap-2 bg-white text-gray-900 px-5 py-2.5 rounded-full text-sm font-semibold shadow-xl translate-y-4 group-hover:translate-y-0 transition-transform duration-300;
+}
+
+/* ===== Metadata badge ===== */
+.meta-badge {
+  @apply inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full font-medium;
+}
+
+.meta-badge-location {
+  @apply bg-blue-50 text-blue-600 border border-blue-100;
+}
+
+.meta-badge-date {
+  @apply bg-gray-50 text-gray-500 border border-gray-100;
+}
+
+/* ===== Modal ===== */
+.modal-backdrop {
+  @apply fixed inset-0 bg-black/70 backdrop-blur-md z-50 flex items-center justify-center p-4;
+  animation: modalFadeIn 0.25s ease-out;
+}
+
+.modal-content {
+  @apply bg-white rounded-3xl max-w-4xl w-full max-h-[92vh] overflow-y-auto shadow-2xl;
+  animation: modalSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modalFadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes modalSlideUp {
+  0% { opacity: 0; transform: translateY(24px) scale(0.97); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
 /* ===== Footer link ===== */
 .footer-link {
   @apply text-gray-400 hover:text-white transition-colors duration-200;
+}
+
+/* ===== Counter animation ===== */
+@keyframes countPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
+
+/* ===== Decorative line ===== */
+.deco-line {
+  @apply w-12 h-1 bg-gradient-to-r from-primary to-blue-400 rounded-full;
+}
+
+/* ===== Featured tag ===== */
+.featured-tag {
+  @apply absolute top-4 left-4 z-10 inline-flex items-center gap-1.5 bg-primary text-white text-xs font-bold px-3.5 py-1.5 rounded-full shadow-lg;
 }

@@ -14,3 +14,17 @@ export function getServiceClient() {
     db: { schema: 'wooseung_skycar' },
   });
 }
+
+// Convert Supabase storage URLs to local proxy URLs
+// e.g. https://api.hsweb.pics/storage/v1/object/public/bucket/file.jpg → /api/storage/bucket/file.jpg
+export function proxyImageUrls<T extends { image_urls?: string[] }>(items: T[]): T[] {
+  const storagePrefix = `${supabaseUrl}/storage/v1/object/public/`;
+  return items.map(item => ({
+    ...item,
+    image_urls: item.image_urls?.map(url =>
+      url.startsWith(storagePrefix)
+        ? `/api/storage/${url.slice(storagePrefix.length)}`
+        : url
+    ),
+  }));
+}

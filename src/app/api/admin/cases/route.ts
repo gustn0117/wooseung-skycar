@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getServiceClient } from '@/lib/supabase';
+import { getServiceClient, proxyImageUrls } from '@/lib/supabase';
 import { cookies } from 'next/headers';
 
 function isAuthed(cookieStore: ReturnType<typeof cookies> extends Promise<infer T> ? T : never) {
@@ -20,7 +20,7 @@ export async function GET() {
     .order('created_at', { ascending: false });
 
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
-  return NextResponse.json(data);
+  return NextResponse.json(proxyImageUrls(data ?? []));
 }
 
 // POST: create a new case

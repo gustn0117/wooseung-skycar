@@ -23,7 +23,7 @@ export function proxyImageUrls<T extends { image_urls?: string[] }>(items: T[]):
     ...item,
     image_urls: item.image_urls?.map(url =>
       url.startsWith(storagePrefix)
-        ? `/api/storage/${url.slice(storagePrefix.length)}`
+        ? `/api/storage/${url.slice(storagePrefix.length)}?v=2`
         : url
     ),
   }));
